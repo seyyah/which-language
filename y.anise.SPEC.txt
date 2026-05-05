@@ -1,0 +1,71 @@
+### Dosya 1: SPEC.txt
+
+PROJECT: mini-note
+AUTHOR: Yağmur Anise KARACA (251478022)
+VERSION: v1
+DATE: 2026-03-24
+
+========================================
+OVERVIEW
+========================================
+
+mini-notes is a command-line utility to manage quick text notes.
+It allows creating, listing, searching, and deleting notes.
+All data is stored in a hidden directory called .mininote/
+
+========================================
+COMMANDS
+========================================
+
+--- init ---
+Usage: python mininote.py init
+Creates a .mininote/ directory and an empty tasks.dat file.
+If .mininote/ already exists, print "Already initialized" and exit.
+
+--- create ---
+Usage: python mininote.py create "title" "content"
+Displays all saved notes (ID and Title only).
+Status: Always active by default.
+Prints saved with ID: <id>"
+
+--- list ---
+Usage: python mininote.py list
+Description: Displays all saved notes (ID and Title only).
+Output: 
+  [1] Shopping List
+  [2] Meeting Notes
+Error: If no notes, print "No notes found."
+
+--- search ---
+Usage: python mininote.py search "keyword"
+The search operation is case-insensitive.
+Description: Searches for the keyword in titles and contents.
+Output: Shows matching notes in 'list' format.
+Error: If no match, print "No results for: <keyword>"
+
+--- filter ---
+Usage: python mininote.py filter "High"
+Description: Lists only the notes that match the specified priority.
+Output: Displays notes in 'list' format but filtered by priority level.
+Error: If no notes match the priority, print "No notes found with priority: <level>"
+
+--- delete ---
+Usage: python mininote.py delete 1
+Description: Removes the note with the given ID.
+Output: "Note #1 deleted."
+Error: If ID not found, print "Note #1 not found."
+
+========================================
+DATA FORMAT
+========================================
+File: .mininotes/notes.dat
+Format: id|title|content|date
+Example: 1|Grocery|Buy milk and eggs|2026-03-17
+
+========================================
+ERROR HANDLING
+========================================
+
+- Running any command before "init": "Not initialized. Run: python mininote.py init"
+- Unknown command: "Unknown command: <command>"
+- Missing arguments: "Usage: python mininote.py <command> [args]"
