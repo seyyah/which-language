@@ -1,0 +1,44 @@
+PROJECT: mini-todo
+AUTHOR: Rashid Buzurtanov 92414781214
+VERSION: v1
+DATE: 2026-05-22
+
+=== 1. Overview ===
+This is a command-line interface (CLI) task management application (mini-todo). 
+In version V1, the focus is to transition all user-facing outputs and error messages into Turkish, and enforce strict argument checks.
+
+=== 2. Commands and Behavior ===
+
+The application is executed via: `python solution_v1.py <command> [arguments]`
+
+* init
+  - Description: Initializes the storage directory.
+  - Behavior: Creates a hidden directory named `.minitodo` and an empty `tasks.dat` file inside it.
+  - Output (Success): "Bos minitodo sistemi '.minitodo/' altinda basariyla olusturuldu."
+  - Output (Error): If `.minitodo` already exists, prints:
+    "Hata: Sistem zaten baslatilmis!"
+
+* add <description>
+  - Description: Adds a new task to the system.
+  - Behavior: Appends the task with an auto-incremented ID, status (PENDING), and date to `tasks.dat`.
+  - Output (Success): "Gorev #<ID> eklendi: <description>"
+  - Output (Error - Missing Argument): If no description is provided, prints:
+    "Kullanim Hasi: Lutfen gorev aciklamasi yazin. Ornek: add 'Sut al'"
+
+* list / done / delete
+  - Description: These commands are placeholders for V1 and are not fully implemented yet.
+  - Output: "Komut '<command_name>' gelecek haftalarda yuklenecektir."
+
+=== 3. Global Error Handling ===
+
+* System Not Initialized:
+  - If any command (except init) is run before initialization, prints:
+    "Hata: Sistem henuz baslatilmamis. Once 'init' calistirin."
+
+* Unknown Command:
+  - If an invalid command is entered, prints:
+    "Hata: Bilinmeyen komut -> <command_name>"
+
+=== 4. V1 Constraints ===
+- No loops (`for` or `while`) are allowed in the source code.
+- No lists (`[]`) or dynamic structures can be used; arguments must be accessed via direct indices of `sys.argv`.
